@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Todo</title>
+</head>
+<body>
+	<h2>Hello</h2>
+	<form method="POST">
+		{% csrf_token %}
+		{{ tasks }}
+		<button type="submit">submit</button>
+		
+	</form>
+	<div class="card">
+		{% for todo in task %}
+			<p>{{todo.task}}</p>
+			<a href="{% url 'update' todo.id %}"><button type="submit">Update</button></a>
+			<a href="{% url 'delete' todo.id %}"><button>Delete</button></a>
+		{% endfor %}
+	</div>
+	
+</body>
+</html>
